@@ -2,7 +2,6 @@
 import React, { Component } from 'react'
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react'
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>
 
 export class MapContainer extends Component {
   render() {
@@ -17,7 +16,6 @@ export class MapContainer extends Component {
       bounds.extend(locations[i].position);
     };
 
-    var markers= [];
     return (
       <Map
       google={this.props.google}
@@ -34,6 +32,7 @@ export class MapContainer extends Component {
                   title={locations[i].title}
                   position={locations[i].position}
                   animation= {google.maps.Animation.DROP}
+                  id = {i}
                 />
       })}
 
