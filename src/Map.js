@@ -5,17 +5,18 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>
 
 export class MapContainer extends Component {
   render() {
-    var points = [
-    { lat: 42.02, lng: -77.01 },
-    { lat: 42.03, lng: -77.02 },
-    { lat: 41.03, lng: -77.04 }
-    ]
+
+    var locations = [
+    {title: 'Fire Brigade Innsbruck', position: { lat: 47.2608639, lng: 11.4051108 }},
+    {title: 'Red Cross Innsbruck', position: { lat: 47.2600461, lng: 11.4046938 }}
+   ];
 
     var bounds = new this.props.google.maps.LatLngBounds();
-    for (var i = 0; i < points.length; i++) {
-      bounds.extend(points[i]);
-    }
+    for (var i = 0; i < locations.length; i++) {
+      bounds.extend(locations[i].position);
+    };
 
+    var markers= [];
     return (
       <Map
       google={this.props.google}
@@ -28,9 +29,14 @@ export class MapContainer extends Component {
       zoom={13}>
 
       <Marker
-        title={'The marker`s title will appear as a tooltip.'}
-        name={'SOMA'}
-        position={{lat: 47.2608639, lng: 11.4051108}} />
+        title={locations[0].title}
+        position={locations[0].position}
+        />
+
+      <Marker
+        title={locations[1].title}
+        position={locations[1].position}
+        />
 
         <InfoWindow onClose={this.onInfoWindowClose}>
             <div>
