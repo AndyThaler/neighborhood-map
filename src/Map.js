@@ -1,3 +1,4 @@
+/* global google */
 import React, { Component } from 'react'
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react'
 
@@ -28,15 +29,15 @@ export class MapContainer extends Component {
       bounds={bounds}
       zoom={13}>
 
-      <Marker
-        title={locations[0].title}
-        position={locations[0].position}
-        />
+      {locations.map((location, i) => {
+        return <Marker
+                  title={locations[i].title}
+                  position={locations[i].position}
+                  animation= {google.maps.Animation.DROP}
+                />
+      })}
 
-      <Marker
-        title={locations[1].title}
-        position={locations[1].position}
-        />
+
 
         <InfoWindow onClose={this.onInfoWindowClose}>
             <div>
