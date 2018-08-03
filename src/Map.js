@@ -72,14 +72,15 @@ export class MapContainer extends Component {
     return (
       <Map
       google={this.props.google}
-      style = {{height: '90%', width: '100%'}}
+      style = {{height: '60%', width: '100%'}}
       initialCenter={{
         lat: 47.2655697,
         lng: 11.4144684
       }}
       bounds={bounds}
       zoom={13}
-      onClick= {this.onMapClicked}>
+      onClick= {this.onMapClicked}
+      id= "map-div">
 
       {locations.map((location, i) => {
         return <Marker
