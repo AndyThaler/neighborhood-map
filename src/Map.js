@@ -1,6 +1,7 @@
 /* global google */
 import React, { Component } from 'react'
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react'
+import Player from './Player'
 
 
 export class MapContainer extends Component {
@@ -97,9 +98,15 @@ export class MapContainer extends Component {
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}>
           <div>
-            <h1>{this.state.selectedPlace.title}</h1>
+          <div>
+          <h1>{this.state.selectedPlace.title}</h1>
+          </div>
+          <div id="player">
+          <Player/>
+          </div>
           </div>
           </InfoWindow>
+
       </Map>
     );
   }
