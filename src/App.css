@@ -8,6 +8,7 @@
   height: 10%;
   margin:0;
   background-color: #333a3a;
+  overflow:auto;
 }
 
 #head-text {

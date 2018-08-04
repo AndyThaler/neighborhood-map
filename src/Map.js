@@ -94,15 +94,12 @@ export class MapContainer extends Component {
                 />
       })}
 
-
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}>
           <div>
-          <div>
           <h1>{this.state.selectedPlace.title}</h1>
-          </div>
-          <div id="player">
+          <div>
           <Player/>
           </div>
           </div>
