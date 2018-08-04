@@ -9,7 +9,7 @@ class ListOrg extends React.Component {
     }
 
     updateQuery = (query) => {
-      this.setState({ query: query.trim() })
+      this.setState({ query: query })
     }
 
   render() {
@@ -45,7 +45,19 @@ class ListOrg extends React.Component {
         value={this.state.query}
         onChange={(event) => this.updateQuery(event.target.value)}
         />
-        <MapContainer locations={locations}/>
+
+        <ul className='service-list'>
+          {showingServices.map((service) => (
+          <li key={service.title} className="service-list-item">
+              <div className="contact-details">
+                <p>{service.title}</p>
+                <p>{service.iconstate}</p>
+              </div>
+          </li>
+          ))}
+        </ul>
+
+        <MapContainer locations={showingServices}/>
 
       </div>
   )

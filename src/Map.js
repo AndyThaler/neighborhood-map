@@ -50,10 +50,7 @@ export class MapContainer extends Component {
 
 
 
-    var bounds = new this.props.google.maps.LatLngBounds();
-    for (var i = 0; i < this.props.locations.length; i++) {
-      bounds.extend(this.props.locations[i].position)
-    }
+
 
     return (
       <Map
@@ -63,7 +60,6 @@ export class MapContainer extends Component {
         lat: 47.2655697,
         lng: 11.4144684
       }}
-      bounds={bounds}
       zoom={13}
       onClick= {this.onMapClicked}
       id= "map-div">
