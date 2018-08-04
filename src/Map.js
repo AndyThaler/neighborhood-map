@@ -50,23 +50,9 @@ export class MapContainer extends Component {
 
 
 
-
-    var locations = [
-    {title: 'Fire Brigade Innsbruck', icon: fireIcon, position: { lat: 47.2608639, lng: 11.4051108 }},
-    {title: 'Red Cross Innsbruck', icon: ambuIcon, position: { lat: 47.2600461, lng: 11.4046938 }},
-    {title: 'Tyrolean Air Ambulance', icon: ambuIcon, position: { lat: 47.2576489, lng: 11.3513075 }},
-    {title: 'Public County- & University Hospital Innsbruck', icon: ambuIcon, position: { lat: 47.2632716, lng: 11.3877864 }},
-    {title: 'Volunteer Fire Department Hötting', icon: fireIcon, position: { lat: 47.2722737, lng: 11.385355 }},
-    {title: 'Volunteer Fire Department Hungerburg', icon: fireIcon, position: { lat: 47.2863071, lng: 11.3956279 }},
-    {title: 'Volunteer Fire Department Mühlau', icon: fireIcon, position: { lat: 47.2809358, lng: 11.4072096 }},
-    {title: 'Volunteer Fire Department Reichenau', icon: fireIcon, position: { lat: 47.2724776, lng: 11.4310706 }},
-    {title: 'Volunteer Fire Department Arzl', icon: fireIcon, position: { lat: 47.2840728, lng: 11.4332432 }},
-    {title: 'Volunteer Fire Department New Arzl', icon: fireIcon, position: { lat: 47.2738388, lng: 11.4444762 }}
-   ];
-
     var bounds = new this.props.google.maps.LatLngBounds();
-    for (var i = 0; i < locations.length; i++) {
-      bounds.extend(locations[i].position)
+    for (var i = 0; i < this.props.locations.length; i++) {
+      bounds.extend(this.props.locations[i].position)
     }
 
     return (
@@ -82,12 +68,12 @@ export class MapContainer extends Component {
       onClick= {this.onMapClicked}
       id= "map-div">
 
-      {locations.map((location, i) => {
+      {this.props.locations.map((location, i) => {
         return <Marker
-                  title={locations[i].title}
-                  position={locations[i].position}
-                  icon= {locations[i].icon}
-                  key = {locations[i].title}
+                  title={this.props.locations[i].title}
+                  position={this.props.locations[i].position}
+                  icon= {this.props.locations[i].icon}
+                  key = {this.props.locations[i].title}
                   animation={(this.state.selectedPlace.title === location.title)
                     && this.props.google.maps.Animation.BOUNCE}
                   onClick= {this.onMarkerClick}
@@ -97,14 +83,11 @@ export class MapContainer extends Component {
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}>
-          <div>
+          <div id="infodiv">
           <h1>{this.state.selectedPlace.title}</h1>
-          <div>
           <Player/>
           </div>
-          </div>
           </InfoWindow>
-
       </Map>
     );
   }

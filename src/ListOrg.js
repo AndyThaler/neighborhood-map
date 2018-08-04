@@ -1,4 +1,6 @@
 import React from 'react'
+import MapContainer from './Map.js'
+
 
 class ListOrg extends React.Component {
 
@@ -12,6 +14,20 @@ class ListOrg extends React.Component {
 
   render() {
 
+
+    var locations = [
+    {title: 'Fire Brigade Innsbruck', iconstate: 'fireIcon', position: { lat: 47.2608639, lng: 11.4051108 }},
+    {title: 'Red Cross Innsbruck', iconstate: 'ambuIcon', position: { lat: 47.2600461, lng: 11.4046938 }},
+    {title: 'Tyrolean Air Ambulance', iconstate: 'ambuIcon', position: { lat: 47.2576489, lng: 11.3513075 }},
+    {title: 'Public County- & University Hospital Innsbruck', iconstate: 'ambuIcon', position: { lat: 47.2632716, lng: 11.3877864 }},
+    {title: 'Volunteer Fire Department Hötting', iconstate: 'fireIcon', position: { lat: 47.2722737, lng: 11.385355 }},
+    {title: 'Volunteer Fire Department Hungerburg', iconstate: 'fireIcon', position: { lat: 47.2863071, lng: 11.3956279 }},
+    {title: 'Volunteer Fire Department Mühlau', iconstate: 'fireIcon', position: { lat: 47.2809358, lng: 11.4072096 }},
+    {title: 'Volunteer Fire Department Reichenau', iconstate: 'fireIcon', position: { lat: 47.2724776, lng: 11.4310706 }},
+    {title: 'Volunteer Fire Department Arzl', iconstate: 'fireIcon', position: { lat: 47.2840728, lng: 11.4332432 }},
+    {title: 'Volunteer Fire Department New Arzl', iconstate: 'fireIcon', position: { lat: 47.2738388, lng: 11.4444762 }}
+   ];
+
     return (
       <div id="list-div">
       <input
@@ -21,8 +37,9 @@ class ListOrg extends React.Component {
         value={this.state.query}
         onChange={(event) => this.updateQuery(event.target.value)}
         />
-      </div>
+        <MapContainer locations={locations}/>
 
+      </div>
   )
 }
 }
