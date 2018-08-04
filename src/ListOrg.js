@@ -1,6 +1,6 @@
 import React from 'react'
 import MapContainer from './Map.js'
-
+import escapeRegExp from 'escape-string-regexp'
 
 class ListOrg extends React.Component {
 
@@ -27,6 +27,14 @@ class ListOrg extends React.Component {
     {title: 'Volunteer Fire Department Arzl', iconstate: 'fireIcon', position: { lat: 47.2840728, lng: 11.4332432 }},
     {title: 'Volunteer Fire Department New Arzl', iconstate: 'fireIcon', position: { lat: 47.2738388, lng: 11.4444762 }}
    ];
+
+   let showingServices
+   if (this.state.query) {
+     const match = new RegExp(escapeRegExp(this.state.query), 'i')
+     showingServices = locations.filter((location) => match.test(location.title))
+   } else {
+     showingServices = locations
+   }
 
     return (
       <div id="list-div">
