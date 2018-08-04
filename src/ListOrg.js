@@ -50,7 +50,7 @@ class ListOrg extends React.Component {
           {showingServices.map((service) => (
           <li key={service.title} className="service-list-item">
               <div className="contact-details">
-                <p>{service.title}</p>
+                <h3>{service.title}</h3>
                 <p>{service.iconstate}</p>
               </div>
           </li>
