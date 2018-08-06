@@ -1,5 +1,6 @@
 import React from 'react'
 import MapContainer from './Map.js'
+import Info from './Info.js'
 import escapeRegExp from 'escape-string-regexp'
 
 class ListOrg extends React.Component {
@@ -65,8 +66,14 @@ class ListOrg extends React.Component {
           </li>
           ))}
         </ul>
+
+        <div>
         <MapContainer locations={showingServices} selectedLoc={this.state.selectedLocation} deleteLoc={this.deleteLoc}/>
-      </div>
+        </div>
+        <div id="information-container">
+        <Info/>
+        </div>
+        </div>
   )
 }
 }
