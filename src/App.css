@@ -32,6 +32,22 @@ width:500px;
 height:500px;
 }
 
+.search-places {
+  height: 30px;
+  width: 200px;
+  font-weight: bold;
+  margin-left: 30px;
+  border: 1px solid red;
+  background: url("./img/search.png") top left no-repeat;
+  background-color: #333a3a;
+  color: white;
+  padding-left: 35px;
+}
+
+::placeholder {
+    color: white;
+}
+
 .service-list {
   height: 30vh;
   width: 100%;

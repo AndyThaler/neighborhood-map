@@ -45,7 +45,6 @@ class ListOrg extends React.Component {
         value={this.state.query}
         onChange={(event) => this.updateQuery(event.target.value)}
         />
-
         <ul className='service-list'>
           {showingServices.map((service) => (
           <li key={service.title} className="service-list-item" onClick= { (event) => this.updateQuery(event.currentTarget.childNodes[0].innerText.replace(/[\n\t\r]/g,""))}>
