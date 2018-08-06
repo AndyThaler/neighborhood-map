@@ -65,9 +65,7 @@ class ListOrg extends React.Component {
           </li>
           ))}
         </ul>
-
         <MapContainer locations={showingServices} selectedLoc={this.state.selectedLocation} deleteLoc={this.deleteLoc}/>
-
       </div>
   )
 }
