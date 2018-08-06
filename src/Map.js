@@ -18,6 +18,7 @@ export class MapContainer extends Component {
           activeMarker: marker,
           showingInfoWindow: true
         })
+        this.props.deleteLoc();
   }
 
   onMapClicked = (props) => {
@@ -75,7 +76,7 @@ export class MapContainer extends Component {
                   position={this.props.locations[i].position}
                   icon= {this.props.locations[i].icon}
                   key = {this.props.locations[i].title}
-                  animation={(this.state.selectedPlace.title === location.title)
+                  animation={(this.state.selectedPlace.title === location.title || this.props.selectedLoc === location.title)
                     && this.props.google.maps.Animation.BOUNCE}
                   onClick= {this.onMarkerClick}
                 />
