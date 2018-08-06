@@ -45,9 +45,15 @@ export class MapContainer extends Component {
 
     var fireIcon = changeMarkerColor('ff0000')
     var ambuIcon = changeMarkerColor('ffffff')
-    // eslint-disable-next-line
-    var poliIcon = changeMarkerColor('0000ff')
 
+    this.props.locations.map((location, i) => {
+      if(this.props.locations[i].iconstate === 'fireIcon') {
+      return  this.props.locations[i].icon = fireIcon;
+      }
+      else {
+        return this.props.locations[i].icon = ambuIcon;
+      }
+    })
 
 
 
