@@ -5,11 +5,16 @@ import escapeRegExp from 'escape-string-regexp'
 class ListOrg extends React.Component {
 
     state = {
-      query: ''
+      query: '',
+      selectedLocation: ''
     }
 
     updateQuery = (query) => {
       this.setState({ query: query })
+    }
+
+    updateSelectedLocation = (loc) => {
+      this.setState({ selectedLocation: loc })
     }
 
   render() {
@@ -47,7 +52,7 @@ class ListOrg extends React.Component {
         />
         <ul className='service-list'>
           {showingServices.map((service) => (
-          <li key={service.title} className="service-list-item" onClick= { (event) => this.updateQuery(event.currentTarget.childNodes[0].innerText.replace(/[\n\t\r]/g,""))}>
+          <li key={service.title} className={"service-list-item " + ( service.title === this.state.selectedLocation ? 'selected' : '')} onClick= { (event) => this.updateSelectedLocation(event.currentTarget.childNodes[0].innerText.replace(/[\n\t\r]/g,""))}>
           <div className="service-name">
                 <h3>{service.title}</h3>
           </div>
@@ -58,7 +63,7 @@ class ListOrg extends React.Component {
           ))}
         </ul>
 
-        <MapContainer locations={showingServices}/>
+        <MapContainer locations={showingServices} selectedLoc={this.state.selectedLocation}/>
 
       </div>
   )

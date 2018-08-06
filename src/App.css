@@ -69,7 +69,8 @@ height:500px;
   display: inline-block;
 }
 
-.service-list-item:hover {
+
+.service-list-item:hover, .selected {
     background: linear-gradient(to bottom right, yellow, blue);
     border: 5px solid blue;
 }
