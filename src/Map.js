@@ -21,13 +21,12 @@ export class MapContainer extends Component {
   }
 
   onMapClicked = (props) => {
-     if (this.state.showingInfoWindow) {
        this.setState({
          showingInfoWindow: false,
          activeMarker: null,
          selectedPlace: [],
        })
-     }
+       this.props.deleteLoc();
    }
 
   render() {
@@ -76,7 +75,7 @@ export class MapContainer extends Component {
                   position={this.props.locations[i].position}
                   icon= {this.props.locations[i].icon}
                   key = {this.props.locations[i].title}
-                  animation={(this.state.selectedPlace.title === location.title || this.props.selectedLoc === location.title)
+                  animation={(this.state.selectedPlace.title === location.title)
                     && this.props.google.maps.Animation.BOUNCE}
                   onClick= {this.onMarkerClick}
                 />

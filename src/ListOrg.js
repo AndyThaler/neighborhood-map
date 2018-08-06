@@ -16,6 +16,9 @@ class ListOrg extends React.Component {
     updateSelectedLocation = (loc) => {
       this.setState({ selectedLocation: loc })
     }
+    deleteLoc = () => {
+      this.setState({ selectedLocation: '' })
+    }
 
   render() {
 
@@ -63,7 +66,7 @@ class ListOrg extends React.Component {
           ))}
         </ul>
 
-        <MapContainer locations={showingServices} selectedLoc={this.state.selectedLocation}/>
+        <MapContainer locations={showingServices} selectedLoc={this.state.selectedLocation} deleteLoc={this.deleteLoc}/>
 
       </div>
   )
