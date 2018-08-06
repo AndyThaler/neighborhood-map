@@ -48,11 +48,13 @@ class ListOrg extends React.Component {
 
         <ul className='service-list'>
           {showingServices.map((service) => (
-          <li key={service.title} className="service-list-item">
-              <div className="contact-details">
+          <li key={service.title} className="service-list-item" onClick= { (event) => this.updateQuery(event.currentTarget.childNodes[0].innerText.replace(/[\n\t\r]/g,""))}>
+          <div className="service-name">
                 <h3>{service.title}</h3>
+          </div>
+          <div className="service-description">
                 <p>{service.iconstate}</p>
-              </div>
+          </div>
           </li>
           ))}
         </ul>
