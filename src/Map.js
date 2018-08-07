@@ -1,7 +1,6 @@
 /* global google */
 import React, { Component } from 'react'
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react'
-import Player from './Player'
 
 
 export class MapContainer extends Component {
@@ -19,6 +18,7 @@ export class MapContainer extends Component {
           showingInfoWindow: true
         })
         this.props.deleteLoc();
+        this.props.updateLoc(marker.title);
   }
 
   onMapClicked = (props) => {
@@ -86,7 +86,6 @@ export class MapContainer extends Component {
           visible={this.state.showingInfoWindow}>
           <div id="infodiv">
           <h1>{this.state.selectedPlace.title}</h1>
-          <Player/>
           </div>
           </InfoWindow>
       </Map>

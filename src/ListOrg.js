@@ -68,7 +68,7 @@ class ListOrg extends React.Component {
         </ul>
 
         <div>
-        <MapContainer locations={showingServices} selectedLoc={this.state.selectedLocation} deleteLoc={this.deleteLoc}/>
+        <MapContainer locations={showingServices} selectedLoc={this.state.selectedLocation} updateLoc={this.updateSelectedLocation} deleteLoc={this.deleteLoc}/>
         </div>
         <div id="information-container">
         <Info locations={showingServices} selectedLoc={this.state.selectedLocation}/>
