@@ -2,21 +2,23 @@ import React from 'react'
 import Player from './Player'
 class Info extends React.Component {
   state = {
-    img: [],
+    img: []
   }
 
-  componentDidUpdate() {
-    fetch(`https://api.unsplash.com/search/photos?page=1&query=${this.props.cat}`, {
+
+  componentDidUpdate(){
+    fetch(`https://api.unsplash.com/search/photos?page=1&query=${this.props.cat.category}`, {
       headers: {
         Authorization: 'Client-ID e8876ac4e8a100796321e72c8f1b2e264d7b84846fff5feae744aea74f8c3499'
       }
       }).then(response => response.json())
       .then(data => {
+        console.log("hello")
         const firstImage = data.results[0]
         let picture  = [
-            <figure>
-                <img src={firstImage.urls.small} alt={this.props.cat} />
-                <figcaption>{this.props.cat} by {firstImage.user.name}</figcaption>
+            <figure key={this.props.selectedLoc} className="info-img">
+                <img src={firstImage.urls.small} alt={this.props.cat.category} />
+                <figcaption>{this.props.cat.category} by {firstImage.user.name}</figcaption>
             </figure>
         ]
         this.setState({img: picture})
@@ -28,7 +30,7 @@ class Info extends React.Component {
 
     return (
       <div id='information'>
-      <h1>{this.props.selectedLoc ||'Welcome! Please Select An Emergency Service Station!'}</h1>
+      <h1>{this.props.selectedLoc || 'Welcome! Please Select An Emergency Service Station!'}</h1>
       <p>Test Test</p>
       {this.state.img}
       </div>
