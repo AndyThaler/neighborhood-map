@@ -1,17 +1,36 @@
 import React from 'react'
-
+import Player from './Player'
 class Info extends React.Component {
+  state = {
+    img: [],
+  }
+
+  componentDidUpdate() {
+    fetch(`https://api.unsplash.com/search/photos?page=1&query=${this.props.cat}`, {
+      headers: {
+        Authorization: 'Client-ID e8876ac4e8a100796321e72c8f1b2e264d7b84846fff5feae744aea74f8c3499'
+      }
+      }).then(response => response.json())
+      .then(data => {
+        const firstImage = data.results[0]
+        let picture  = [
+            <figure>
+                <img src={firstImage.urls.small} alt={this.props.cat} />
+                <figcaption>{this.props.cat} by {firstImage.user.name}</figcaption>
+            </figure>
+        ]
+        this.setState({img: picture})
+      })
+      .catch(e => console.log(e, 'image'));
+  }
 
   render() {
 
     return (
       <div id='information'>
       <h1>{this.props.selectedLoc ||'Welcome! Please Select An Emergency Service Station!'}</h1>
-      <p>
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a lectus ut purus placerat dignissim. In sollicitudin rutrum efficitur. Sed in posuere ante. Phasellus feugiat lorem ac lectus molestie dignissim. Etiam pellentesque convallis molestie. Sed ultrices pretium eros, ac egestas felis rhoncus sit amet. Quisque et ex a ex posuere suscipit.
-
-Praesent a nisl molestie magna interdum malesuada luctus in nulla. Sed mollis eros sit amet rhoncus condimentum. Donec quis turpis ullamcorper, pharetra ipsum a, placerat erat. Mauris accumsan vulputate efficitur. Maecenas orci nunc, fringilla sit amet maximus sed, gravida non urna. Phasellus non nunc ut urna facilisis bibendum. Donec fermentum mauris id dui iaculis dapibus. Nulla facilisis tellus ac elit placerat imperdiet. Aenean convallis rutrum nulla, sed vestibulum sapien placerat eu. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla in blandit tortor, ac sodales augue. Duis et pellentesque mi, nec convallis eros. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean pharetra diam sit amet mauris laoreet mattis.</p>
+      <p>Test Test</p>
+      {this.state.img}
       </div>
   )
 }
