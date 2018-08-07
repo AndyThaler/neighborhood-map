@@ -108,3 +108,8 @@ body {
   color: white;
   border: 2px solid white;
 }
+
+.info-img {
+  max-height:300px;
+  margin: auto;
+}

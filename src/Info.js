@@ -13,11 +13,10 @@ class Info extends React.Component {
       }
       }).then(response => response.json())
       .then(data => {
-        console.log("hello")
-        const firstImage = data.results[0]
+        const firstImage = data.results[1]
         let picture  = [
-            <figure key={this.props.selectedLoc} className="info-img">
-                <img src={firstImage.urls.small} alt={this.props.cat.category} />
+            <figure key={this.props.selectedLoc}>
+                <img src={firstImage.urls.small}  className="info-img" alt={this.props.cat.category} />
                 <figcaption>{this.props.cat.category} by {firstImage.user.name}</figcaption>
             </figure>
         ]
