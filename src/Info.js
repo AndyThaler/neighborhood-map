@@ -6,7 +6,7 @@ class Info extends React.Component {
 
     return (
       <div id='information'>
-      <h1>Hello World!</h1>
+      <h1>{this.props.selectedLoc ||'Welcome! Please Select An Emergency Service Station!'}</h1>
       <p>
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a lectus ut purus placerat dignissim. In sollicitudin rutrum efficitur. Sed in posuere ante. Phasellus feugiat lorem ac lectus molestie dignissim. Etiam pellentesque convallis molestie. Sed ultrices pretium eros, ac egestas felis rhoncus sit amet. Quisque et ex a ex posuere suscipit.

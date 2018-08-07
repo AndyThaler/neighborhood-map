@@ -56,8 +56,6 @@ export class MapContainer extends Component {
     })
 
 
-
-
     return (
       <Map
       google={this.props.google}
