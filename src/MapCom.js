@@ -9,8 +9,17 @@ class MapCom extends Component {
       lat: 47.2655697,
       lng: 11.4144684
     },
-    zoom: 12
+    zoom: 12,
+    selectedPlace: {},
+    activeMarker: {},
   };
+  onMarkerClick = (marker) => {
+        this.setState({
+          selectedPlace: marker,
+          activeMarker: marker.title,
+          showingInfoWindow: true
+        })
+  }
 
   changeMarkerColor(color ,maps) {
     var markerImage = new maps.MarkerImage(
@@ -34,13 +43,17 @@ renderMarkers(locations, map, maps) {
       else {
         location.icon = ambuIcon;
       }
-    return new maps.Marker({
+    let marker = new maps.Marker({
     title: location.title,
     position: location.position,
     icon: location.icon,
     map: map,
-    key: location.title
+    key: location.title,
   })
+  marker.addListener('click', () => {
+    this.onMarkerClick(marker)
+  })
+  return marker
 })
 }
   render() {
