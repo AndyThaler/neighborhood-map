@@ -37,30 +37,31 @@ class MapCom extends Component {
       return markerImage;
   }
 
+   renderMarkers(locations, map, maps) {
+     var fireIcon = this.changeMarkerColor('ff0000', maps)
+     var ambuIcon = this.changeMarkerColor('ffffff', maps)
+     locations.map((location) => {
+     if(location.iconstate === 'fireIcon') {
+           location.icon = fireIcon;
+         }
+         else {
+           location.icon = ambuIcon;
+         }
+       let marker = new maps.Marker({
+       title: location.title,
+       position: location.position,
+       icon: location.icon,
+       map: map,
+       key: location.title,
+     })
+     marker.addListener('click', () => {
+       this.onMarkerClick(marker, location)
+     })
+     return marker
+   })
+   }
 
-renderMarkers(locations, map, maps) {
-  var fireIcon = this.changeMarkerColor('ff0000', maps)
-  var ambuIcon = this.changeMarkerColor('ffffff', maps)
-  locations.map((location) => {
-  if(location.iconstate === 'fireIcon') {
-        location.icon = fireIcon;
-      }
-      else {
-        location.icon = ambuIcon;
-      }
-    let marker = new maps.Marker({
-    title: location.title,
-    position: location.position,
-    icon: location.icon,
-    map: map,
-    key: location.title,
-  })
-  marker.addListener('click', () => {
-    this.onMarkerClick(marker, location)
-  })
-  return marker
-})
-}
+
   render() {
 
     return (
