@@ -12,16 +12,39 @@ class MapCom extends Component {
     zoom: 12
   };
 
-renderMarkers(map, maps) {
-  let marker = new maps.Marker({
-    position: {
-      lat: 47.2655697,
-      lng: 11.4144684
-    },
-    map: map
+  changeMarkerColor(color ,maps) {
+    var markerImage = new maps.MarkerImage(
+      'http://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|' + color +
+      '|40|_|%E2%80%A2',
+      new maps.Size(21, 34),
+      new maps.Point(0, 0),
+      new maps.Point(10, 34),
+      new maps.Size(21, 34));
+      return markerImage;
+  }
+
+
+renderMarkers(locations, map, maps) {
+  var fireIcon = this.changeMarkerColor('ff0000', maps)
+  var ambuIcon = this.changeMarkerColor('ffffff', maps)
+  locations.map((location) => {
+  if(location.iconstate === 'fireIcon') {
+        location.icon = fireIcon;
+      }
+      else {
+        location.icon = ambuIcon;
+      }
+    return new maps.Marker({
+    title: location.title,
+    position: location.position,
+    icon: location.icon,
+    map: map,
+    key: location.title
   })
+})
 }
   render() {
+
     return (
       // Important! Always set the container height explicitly
       <div id="map">
@@ -29,7 +52,8 @@ renderMarkers(map, maps) {
           bootstrapURLKeys={{ key: 'AIzaSyAgsu0KDdZbhCISu_0-iDH1DmBuAv00gck' }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
-          onGoogleApiLoaded={({map, maps}) => this.renderMarkers(map, maps)}
+          onGoogleApiLoaded={({location, map, maps}) => this.renderMarkers(this.props.locations, map, maps)}
+          yesIWantToUseGoogleMapApiInternals={true}
         >
           <AnyReactComponent
             lat={59.955413}
