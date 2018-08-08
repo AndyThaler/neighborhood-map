@@ -2,11 +2,13 @@ import React from 'react'
 import Player from './Player'
 class Info extends React.Component {
   state = {
-    img: []
+    img: [],
+    oldLoc: ''
   }
 
 
   componentDidUpdate(){
+    if(this.state.oldLoc !== this.props.selectedLoc)
     fetch(`https://api.unsplash.com/search/photos?page=1&query=${this.props.cat.category}`, {
       headers: {
         Authorization: 'Client-ID e8876ac4e8a100796321e72c8f1b2e264d7b84846fff5feae744aea74f8c3499'
@@ -20,7 +22,7 @@ class Info extends React.Component {
                 <figcaption>{this.props.cat.category} by {firstImage.user.name}</figcaption>
             </figure>
         ]
-        this.setState({img: picture})
+        this.setState({img: picture, oldLoc: this.props.selectedLoc})
       })
       .catch(e => console.log(e, 'image'));
   }
