@@ -1,5 +1,5 @@
 import React from 'react'
-import MapContainer from './Map.js'
+import MapCom from './MapCom.js'
 import Info from './Info.js'
 import escapeRegExp from 'escape-string-regexp'
 
@@ -73,8 +73,8 @@ class ListOrg extends React.Component {
           ))}
         </ul>
 
-        <div>
-        <MapContainer locations={showingServices} selectedLoc={this.state.selectedLocation} updateLoc={this.updateSelectedLocation} deleteLoc={this.deleteLoc}/>
+        <div className='map-div'>
+        <MapCom locations={showingServices} selectedLoc={this.state.selectedLocation} updateLoc={this.updateSelectedLocation} deleteLoc={this.deleteLoc}/>
         </div>
         <div id="information-container">
         <Info locations={showingServices} selectedLoc={this.state.selectedLocation} cat={this.state.chosenLocation[0]}/>
