@@ -11,14 +11,19 @@ class MapCom extends Component {
     },
     zoom: 12,
     selectedPlace: {},
-    activeMarker: {},
+    activeMarker: {}
   };
-  onMarkerClick = (marker) => {
+  onMarkerClick = (marker, location) => {
         this.setState({
           selectedPlace: marker,
           activeMarker: marker.title,
           showingInfoWindow: true
         })
+        this.props.deleteLoc();
+        if(this.props.selectedLoc !== marker.title) {
+          this.props.updateLoc(marker.title, this.props.locations);
+        }
+
   }
 
   changeMarkerColor(color ,maps) {
@@ -51,7 +56,7 @@ renderMarkers(locations, map, maps) {
     key: location.title,
   })
   marker.addListener('click', () => {
-    this.onMarkerClick(marker)
+    this.onMarkerClick(marker, location)
   })
   return marker
 })
