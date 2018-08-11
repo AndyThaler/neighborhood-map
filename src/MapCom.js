@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
+import escapeRegExp from 'escape-string-regexp';
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 class MapCom extends Component {
   static defaultProps = {
@@ -9,22 +9,30 @@ class MapCom extends Component {
       lat: 47.2655697,
       lng: 11.4144684
     },
-    zoom: 12,
-    selectedPlace: {},
-    activeMarker: {}
-  };
-  onMarkerClick = (marker, location) => {
-        this.setState({
-          selectedPlace: marker,
-          activeMarker: marker.title,
-          showingInfoWindow: true
-        })
-        this.props.deleteLoc();
-        if(this.props.selectedLoc !== marker.title) {
-          this.props.updateLoc(marker.title, this.props.locations);
-        }
-
+    zoom: 12
   }
+  state = {
+    selectedPlace: {},
+    activeMarker: {},
+    map: {},
+    maps: {},
+    places: [],
+    markers: [],
+    shownmarkers: [],
+    init: ''
+  }
+    onMarkerClick = (marker, location) => {
+          this.setState({
+            selectedPlace: marker,
+            activeMarker: marker.title,
+            showingInfoWindow: true
+          })
+          if(this.props.selectedLoc !== marker.title) {
+            this.props.deleteLoc();
+            this.props.updateLoc(marker.title, this.props.locations);
+          }
+
+    }
 
   changeMarkerColor(color ,maps) {
     var markerImage = new maps.MarkerImage(
@@ -37,51 +45,83 @@ class MapCom extends Component {
       return markerImage;
   }
 
-   renderMarkers(locations, map, maps) {
-     var fireIcon = this.changeMarkerColor('ff0000', maps)
-     var ambuIcon = this.changeMarkerColor('ffffff', maps)
-     locations.map((location) => {
-     if(location.iconstate === 'fireIcon') {
-           location.icon = fireIcon;
-         }
-         else {
-           location.icon = ambuIcon;
-         }
-       let marker = new maps.Marker({
-       title: location.title,
-       position: location.position,
-       icon: location.icon,
-       map: map,
-       key: location.title,
-     })
+  componentDidUpdate() {
+    if(this.state.places !== this.props.locations && this.state.init === '1'){
+    this.setState({ places: this.props.locations})
+    let showingMarkers
+    debugger
+    if (this.props.query) {
+      debugger
+      this.clearMarkers()
+      const match = new RegExp(escapeRegExp(this.props.query), 'i')
+      showingMarkers = this.state.markers.filter((marker) => match.test(marker.title))
+    } else {
+      showingMarkers = this.state.markers
+    }
+    this.setState({ shownMarkers: showingMarkers})
+    this.setMapOnMarkers(showingMarkers, this.state.map)
+  }
+  }
+
+  setMapOnMarkers(markers, map) {
+    markers.map(marker => {
+      return marker.setMap(map);
+    }
+    )
+  }
+
+  clearMarkers() {
+    this.setMapOnMarkers(this.state.shownMarkers, null)
+  }
+
+
+  renderMarker(locations, map, maps) {
+   this.setState({map: map, maps: maps, markers: []})
+   var fireIcon = this.changeMarkerColor('ff0000', maps)
+   var ambuIcon = this.changeMarkerColor('ffffff', maps)
+   locations.map((location) => {
+   if(location.iconstate === 'fireIcon') {
+         location.icon = fireIcon;
+       }
+       else {
+         location.icon = ambuIcon;
+       }
+     let marker = new maps.Marker({
+     title: location.title,
+     position: location.position,
+     icon: location.icon,
+     key: location.title
+   })
      marker.addListener('click', () => {
-       this.onMarkerClick(marker, location)
+       this.onMarkerClick(marker)
+     })
+     this.setState({
+       markers: [...this.state.markers, marker]
      })
      return marker
-   })
-   }
+    })
+    this.setState({ init: '1'})
+    var array = [...this.state.markers]
+    array.splice(0, 0)
+    this.setState({markers: array})
+  }
 
 
   render() {
 
     return (
-      // Important! Always set the container height explicitly
+
       <div id="map">
         <GoogleMapReact
           bootstrapURLKeys={{ key: 'AIzaSyAgsu0KDdZbhCISu_0-iDH1DmBuAv00gck' }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
-          onGoogleApiLoaded={({location, map, maps}) => this.renderMarkers(this.props.locations, map, maps)}
+          onGoogleApiLoaded={({location, map, maps}) => this.renderMarker(this.props.locations, map, maps)}
           yesIWantToUseGoogleMapApiInternals={true}
         >
-          <AnyReactComponent
-            lat={59.955413}
-            lng={30.337844}
-            text={'Kreyser Avrora'}
-          />
         </GoogleMapReact>
       </div>
-    );
+    )
   }
 }
 
