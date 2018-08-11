@@ -49,9 +49,7 @@ class MapCom extends Component {
     if(this.state.places !== this.props.locations && this.state.init === '1'){
     this.setState({ places: this.props.locations})
     let showingMarkers
-    debugger
     if (this.props.query) {
-      debugger
       this.clearMarkers()
       const match = new RegExp(escapeRegExp(this.props.query), 'i')
       showingMarkers = this.state.markers.filter((marker) => match.test(marker.title))
