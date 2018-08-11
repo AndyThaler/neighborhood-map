@@ -21,6 +21,14 @@ class MapCom extends Component {
     shownmarkers: [],
     init: ''
   }
+    onListClick = () => {
+      debugger
+      let listclicker
+      const match = new RegExp(escapeRegExp(this.props.selectedLoc))
+      listclicker = this.state.shownMarkers.filter((marker) => match.test(marker.title))
+      listclicker[0].setAnimation(this.state.maps.Animation.BOUNCE)
+    }
+
     onMarkerClick = (marker, location) => {
           this.setState({
             selectedPlace: marker,
@@ -59,6 +67,9 @@ class MapCom extends Component {
     this.setState({ shownMarkers: showingMarkers})
     this.setMapOnMarkers(showingMarkers, this.state.map)
   }
+    if(this.props.selectedLoc) {
+      this.onListClick()
+    }
   }
 
   setMapOnMarkers(markers, map) {
