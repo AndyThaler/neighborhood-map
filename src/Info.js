@@ -28,7 +28,7 @@ class Info extends React.Component {
       })
       .catch(e => console.log(e, 'image'))};}
       .bind(this),
-      1000
+      100
     )
   }
 
@@ -37,7 +37,6 @@ class Info extends React.Component {
     return (
       <div id='information'>
       <h1>{this.props.selectedLoc || 'Welcome! Please Select An Emergency Service Station!'}</h1>
-      <p>Test Test</p>
       {this.state.img}
       </div>
   )
