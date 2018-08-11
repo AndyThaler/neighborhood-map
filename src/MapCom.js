@@ -28,10 +28,10 @@ class MapCom extends Component {
             showingInfoWindow: true
           })
           if(this.props.selectedLoc !== marker.title) {
-            this.props.deleteLoc();
-            this.props.updateLoc(marker.title, this.props.locations);
+            this.props.deleteLoc()
+            this.props.updateLoc(marker.title, this.props.locations)
           }
-
+        marker.setAnimation(this.state.maps.Animation.BOUNCE)
     }
 
   changeMarkerColor(color ,maps) {
