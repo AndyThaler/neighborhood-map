@@ -13,6 +13,7 @@ class ListOrg extends React.Component {
 
     updateQuery = (query) => {
       this.setState({ query: query })
+      this.deleteLoc()
     }
 
     updateSelectedLocation = (loc, locations) => {

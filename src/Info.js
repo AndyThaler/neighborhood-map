@@ -2,7 +2,7 @@ import React from 'react'
 import Player from './Player'
 class Info extends React.Component {
   state = {
-    img: [],
+    img: <Player/>,
     oldLoc: ''
   }
 
@@ -10,6 +10,10 @@ class Info extends React.Component {
   componentDidUpdate(){
     setTimeout(
       function() {
+    if(!this.props.selectedLoc) {
+      this.setState({img: <Player/>})
+    }
+    else {
     if(this.state.oldLoc !== this.props.selectedLoc) {
     fetch(`https://api.unsplash.com/search/photos?page=1&query=${this.props.cat.category}`, {
       headers: {
@@ -26,7 +30,7 @@ class Info extends React.Component {
         ]
         this.setState({img: picture, oldLoc: this.props.selectedLoc})
       })
-      .catch(e => console.log(e, 'image'))};}
+      .catch(e => console.log(e, 'image'))};}}
       .bind(this),
       100
     )
@@ -37,7 +41,9 @@ class Info extends React.Component {
     return (
       <div id='information'>
       <h1>{this.props.selectedLoc || 'Welcome! Please Select An Emergency Service Station!'}</h1>
+      <div id='information-core'>
       {this.state.img}
+      </div>
       </div>
   )
 }
