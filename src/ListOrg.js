@@ -60,6 +60,7 @@ class ListOrg extends React.Component {
         value={this.state.query}
         onChange={(event) => this.updateQuery(event.target.value)}
         />
+        <button onClick={this.deleteLoc} className="button">Delete</button>
         <ul className='service-list'>
           {showingServices.map((service) => (
           <li key={service.title} className={"service-list-item " + ( service.title === this.state.selectedLocation ? 'selected' : '')} onClick= { (event) => this.updateSelectedLocation(event.currentTarget.childNodes[0].innerText.replace(/[\n\t\r]/g,""), locations)}>

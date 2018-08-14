@@ -22,7 +22,6 @@ class MapCom extends Component {
     init: ''
   }
     onListClick = () => {
-      debugger
       let listclicker
       const match = new RegExp(escapeRegExp(this.props.selectedLoc))
       listclicker = this.state.shownMarkers.filter((marker) => match.test(marker.title))
