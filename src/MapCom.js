@@ -118,8 +118,8 @@ class MapCom extends Component {
   render() {
 
     return (
-
-      <div id="map">
+      <section>
+      <div role="application" id="map">
         <GoogleMapReact
           bootstrapURLKeys={{ key: 'AIzaSyAgsu0KDdZbhCISu_0-iDH1DmBuAv00gck' }}
           defaultCenter={this.props.center}
@@ -129,6 +129,7 @@ class MapCom extends Component {
         >
         </GoogleMapReact>
       </div>
+      </section>
     )
   }
 }

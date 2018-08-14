@@ -95,6 +95,11 @@ body {
     border: 5px solid blue;
 }
 
+.service-list-item:focus {
+  background: linear-gradient(to bottom right, orange, black);
+  border: 5px solid blue;
+}
+
 .service-name {
   font-size: 15px;
   vertical-align: middle;

@@ -39,12 +39,12 @@ class Info extends React.Component {
   render() {
 
     return (
-      <div id='information'>
-      <h1>{this.props.selectedLoc || 'Welcome! Please Select An Emergency Service Station!'}</h1>
-      <div id='information-core'>
+      <section id='information'>
+      <h2 tabindex="0">{this.props.selectedLoc || 'Welcome! Please Select An Emergency Service Station!'}</h2>
+      <div tabindex="0" role="application" id='information-core'>
       {this.state.img}
       </div>
-      </div>
+      </section>
   )
 }
 }
