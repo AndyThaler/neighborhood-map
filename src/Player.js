@@ -8,7 +8,7 @@ class Player extends React.Component {
         height: '250',
         width: '400',
         playerVars: {
-          autoplay: 1
+          autoplay: 0
         }
       }
 
