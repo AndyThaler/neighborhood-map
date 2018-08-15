@@ -28,6 +28,10 @@ class ListOrg extends React.Component {
       this.setState({ selectedLocation: '' })
     }
 
+    deleteBtn = () => {
+      this.deleteLoc()
+      this.setState({ query: ''});
+    }
   render() {
 
 
@@ -55,14 +59,14 @@ class ListOrg extends React.Component {
     return (
       <section id="list-div">
       <input
-        className="search-places"
+        id="search-places"
         type="text"
         placeholder="Search places"
         tabIndex="2"
         value={this.state.query}
         onChange={(event) => this.updateQuery(event.target.value)}
         />
-        <button onClick={this.deleteLoc} tabIndex="3" className="button">Delete</button>
+        <button onClick={this.deleteBtn} tabIndex="3" className="button">Delete</button>
         <ul className='service-list'>
           {showingServices.map((service) => (
           <li aria-labelledby="service-name" tabIndex="4" key={service.title} className={"service-list-item " + ( service.title === this.state.selectedLocation ? 'selected' : '')} onClick= { (event) => this.updateSelectedLocation(event.currentTarget.childNodes[0].innerText.replace(/[\n\t\r]/g,""), locations)}>

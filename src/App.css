@@ -42,7 +42,7 @@ body {
   background-color: #333a3a;
 }
 
-.search-places {
+#search-places {
   height: 30px;
   width: 200px;
   font-weight: bold;
