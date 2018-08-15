@@ -1,4 +1,5 @@
 import React from 'react'
+//Add the Youtube dependency
 import YouTube from 'react-youtube'
 
 class Player extends React.Component {
