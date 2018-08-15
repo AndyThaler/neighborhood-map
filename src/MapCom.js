@@ -11,6 +11,7 @@ class MapCom extends Component {
     },
     zoom: 12
   }
+
   state = {
     selectedPlace: {},
     activeMarker: {},
@@ -21,13 +22,15 @@ class MapCom extends Component {
     shownmarkers: [],
     init: ''
   }
+
+  //Connecting the list with the marker, when clicked
     onListClick = () => {
       let listclicker
       const match = new RegExp(escapeRegExp(this.props.selectedLoc))
       listclicker = this.state.shownMarkers.filter((marker) => match.test(marker.title))
       listclicker[0].setAnimation(this.state.maps.Animation.BOUNCE)
     }
-
+    //Gets called when a marker is clicked - Sets the selected location
     onMarkerClick = (marker, location) => {
           this.setState({
             selectedPlace: marker,
@@ -41,6 +44,7 @@ class MapCom extends Component {
         marker.setAnimation(this.state.maps.Animation.BOUNCE)
     }
 
+  //Changing colors of markers depending on their type
   changeMarkerColor(color ,maps) {
     var markerImage = new maps.MarkerImage(
       'http://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|' + color +
@@ -52,6 +56,7 @@ class MapCom extends Component {
       return markerImage;
   }
 
+  //Whenever the list changes, the map will too
   componentDidUpdate() {
     if(this.state.places !== this.props.locations && this.state.init === '1'){
     this.setState({ places: this.props.locations})
@@ -71,6 +76,7 @@ class MapCom extends Component {
     }
   }
 
+  //Setting the markers on the map
   setMapOnMarkers(markers, map) {
     markers.map(marker => {
       return marker.setMap(map);
@@ -78,6 +84,7 @@ class MapCom extends Component {
     )
   }
 
+  //making the unwanted markers invisible
   clearMarkers() {
     this.setMapOnMarkers(this.state.shownMarkers, null)
   }

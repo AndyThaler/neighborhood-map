@@ -16,6 +16,7 @@ class ListOrg extends React.Component {
       this.deleteLoc()
     }
 
+    //filters the location's title and sets it in the state
     updateSelectedLocation = (loc, locations) => {
       this.setState({ selectedLocation: loc})
 
@@ -27,14 +28,14 @@ class ListOrg extends React.Component {
     deleteLoc = () => {
       this.setState({ selectedLocation: '' })
     }
-
+    //resets the locations when the delete Button is pressed
     deleteBtn = () => {
       this.deleteLoc()
       this.setState({ query: ''});
     }
   render() {
 
-
+    //the different locations
     var locations = [
     {title: 'Fire Brigade Innsbruck', category: 'Fire', description: 'The only paid fire brigade in the county, that does not belong to a company.', iconstate: 'fireIcon', position: { lat: 47.2608639, lng: 11.4051108 }},
     {title: 'Red Cross Innsbruck', category: 'Ambulance', description: 'The biggest ambulance station in the whole county.', iconstate: 'ambuIcon', position: { lat: 47.2600461, lng: 11.4046938 }},
@@ -48,6 +49,7 @@ class ListOrg extends React.Component {
     {title: 'Volunteer Fire Department New Arzl', category: 'Fire', description: 'The voluntary fire outpost in New Arzl.', iconstate: 'fireIcon', position: { lat: 47.2738388, lng: 11.4444762 }}
    ];
 
+   //filters the locations, that match the query
    let showingServices
    if (this.state.query) {
      const match = new RegExp(escapeRegExp(this.state.query), 'i')
@@ -62,14 +64,14 @@ class ListOrg extends React.Component {
         id="search-places"
         type="text"
         placeholder="Search places"
-        tabIndex="2"
+        tabIndex="0"
         value={this.state.query}
         onChange={(event) => this.updateQuery(event.target.value)}
         />
-        <button onClick={this.deleteBtn} tabIndex="3" className="button">Delete</button>
+        <button onClick={this.deleteBtn} tabIndex="0" className="button">Delete</button>
         <ul className='service-list'>
           {showingServices.map((service) => (
-          <li aria-labelledby="service-name" tabIndex="4" key={service.title} className={"service-list-item " + ( service.title === this.state.selectedLocation ? 'selected' : '')} onClick= { (event) => this.updateSelectedLocation(event.currentTarget.childNodes[0].innerText.replace(/[\n\t\r]/g,""), locations)}>
+          <li aria-labelledby="service-name" tabIndex="0" key={service.title} className={"service-list-item " + ( service.title === this.state.selectedLocation ? 'selected' : '')} onClick= { (event) => this.updateSelectedLocation(event.currentTarget.childNodes[0].innerText.replace(/[\n\t\r]/g,""), locations)}>
           <div className="service-name">
                 <h3>{service.title}</h3>
           </div>

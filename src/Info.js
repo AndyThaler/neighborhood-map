@@ -8,12 +8,14 @@ class Info extends React.Component {
 
 
   componentDidUpdate(){
+    //whenever the location changes, this function gets called
     setTimeout(
       function() {
     if(!this.props.selectedLoc) {
       this.setState({img: <Player/>})
     }
     else {
+    //Third-Party API unsplash is requested
     if(this.state.oldLoc !== this.props.selectedLoc) {
     fetch(`https://api.unsplash.com/search/photos?page=1&query=${this.props.cat.category}`, {
       headers: {
