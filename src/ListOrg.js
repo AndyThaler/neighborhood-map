@@ -58,14 +58,14 @@ class ListOrg extends React.Component {
         className="search-places"
         type="text"
         placeholder="Search places"
-        tabindex="2"
+        tabIndex="2"
         value={this.state.query}
         onChange={(event) => this.updateQuery(event.target.value)}
         />
-        <button onClick={this.deleteLoc} tabindex="3" className="button">Delete</button>
-        <ul role="list" className='service-list'>
+        <button onClick={this.deleteLoc} tabIndex="3" className="button">Delete</button>
+        <ul className='service-list'>
           {showingServices.map((service) => (
-          <li role="listitem" aria-labelledby="service-name" tabindex="4" key={service.title} className={"service-list-item " + ( service.title === this.state.selectedLocation ? 'selected' : '')} onClick= { (event) => this.updateSelectedLocation(event.currentTarget.childNodes[0].innerText.replace(/[\n\t\r]/g,""), locations)}>
+          <li aria-labelledby="service-name" tabIndex="4" key={service.title} className={"service-list-item " + ( service.title === this.state.selectedLocation ? 'selected' : '')} onClick= { (event) => this.updateSelectedLocation(event.currentTarget.childNodes[0].innerText.replace(/[\n\t\r]/g,""), locations)}>
           <div className="service-name">
                 <h3>{service.title}</h3>
           </div>
@@ -76,7 +76,7 @@ class ListOrg extends React.Component {
           ))}
         </ul>
 
-        <div className='map-div' tabindex="-1">
+        <div className='map-div' tabIndex="-1">
         <MapCom locations={showingServices} query={this.state.query} selectedLoc={this.state.selectedLocation} updateLoc={this.updateSelectedLocation} deleteLoc={this.deleteLoc}/>
         </div>
         <div id="information-container">

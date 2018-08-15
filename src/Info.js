@@ -40,8 +40,8 @@ class Info extends React.Component {
 
     return (
       <section id='information'>
-      <h2 tabindex="0">{this.props.selectedLoc || 'Welcome! Please Select An Emergency Service Station!'}</h2>
-      <div tabindex="0" role="application" id='information-core'>
+      <h2 tabIndex="0">{this.props.selectedLoc || 'Welcome! Please Select An Emergency Service Station!'}</h2>
+      <div tabIndex="0" role="application" id='information-core'>
       {this.state.img}
       </div>
       </section>

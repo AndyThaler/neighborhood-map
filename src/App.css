@@ -1,3 +1,7 @@
+/*
+* === MAIN CSS ===
+*/
+
 body {
   height: 100%;
   background-color: #333a3a;
@@ -8,6 +12,9 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/*
+* === HEADING ===
+*/
 
 #head {
   width: 100%;
@@ -25,6 +32,9 @@ body {
   line-height: 10vh;
 }
 
+/*
+* === LIST SEGMENT ===
+*/
 #list-div {
   width: 100%;
   height: 30%;
@@ -112,6 +122,10 @@ body {
   font-size: 12px;
 }
 
+/*
+* === MAP SEGMENT ===
+*/
+
 .map-div {
   width:50%;
   display: inline-block;
@@ -125,6 +139,11 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+
+/*
+* === INFORMATION SEGMENT ===
+*/
+
 #information-container {
   position:relative;
   float: right;
@@ -152,3 +171,7 @@ body {
   max-height:300px;
   margin: auto;
 }
+
+/*
+* === RESPONSIVENESS ===
+*/
