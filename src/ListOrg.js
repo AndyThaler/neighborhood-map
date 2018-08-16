@@ -60,6 +60,7 @@ class ListOrg extends React.Component {
 
     return (
       <section id="list-div">
+      <div id="search-div">
       <input
         id="search-places"
         type="text"
@@ -69,6 +70,7 @@ class ListOrg extends React.Component {
         onChange={(event) => this.updateQuery(event.target.value)}
         />
         <button onClick={this.deleteBtn} tabIndex="0" className="button">Delete</button>
+        </div>
         <ul className='service-list'>
           {showingServices.map((service) => (
           <li aria-labelledby="service-name" tabIndex="0" key={service.title} className={"service-list-item " + ( service.title === this.state.selectedLocation ? 'selected' : '')} onClick= { (event) => this.updateSelectedLocation(event.currentTarget.childNodes[0].innerText.replace(/[\n\t\r]/g,""), locations)}>
@@ -81,12 +83,13 @@ class ListOrg extends React.Component {
           </li>
           ))}
         </ul>
-
+        <div id="map-info-div">
         <div className='map-div' tabIndex="-1">
         <MapCom locations={showingServices} query={this.state.query} selectedLoc={this.state.selectedLocation} updateLoc={this.updateSelectedLocation} deleteLoc={this.deleteLoc}/>
         </div>
         <div id="information-container">
         <Info locations={showingServices} selectedLoc={this.state.selectedLocation} cat={this.state.chosenLocation[0]}/>
+        </div>
         </div>
         </section>
   )

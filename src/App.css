@@ -42,6 +42,10 @@ body {
   background-color: #333a3a;
 }
 
+#input {
+  width: 100%;
+}
+
 #search-places {
   height: 30px;
   width: 200px;
@@ -164,7 +168,7 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 100%;
 }
 
 .info-img {
@@ -175,3 +179,82 @@ body {
 /*
 * === RESPONSIVENESS ===
 */
+
+@media only screen and (max-width: 600px) {
+    #head-text {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    #search-places {
+      margin: 5%;
+    }
+
+    .service-list {
+      border-bottom: 4px dotted white;
+    }
+
+    .service-list-item {
+      border: 2px solid #722727;
+      border-radius: 0px 0px;
+      width: 90%;
+      height: auto;
+      padding: 1px;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+    }
+
+    .service-name {
+      font-size: 12px;
+      vertical-align: middle;
+      display: table-cell;
+      margin-bottom: 0em;
+      padding-left: 5px;
+    }
+
+    .service-description {
+      margin-top: -1em;
+      font-size: 10px;
+      padding-left: 5px;
+    }
+
+    #map-info-div {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .info-img {
+      max-width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+  #information {
+    width: 80%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+    #information-container {
+      width:100%;
+      order: 1;
+    }
+
+    #info-header {
+      font-size: 16px;
+    }
+
+    .map-div {
+      margin-top: 10px;
+      width: 100%;
+      order: 2;
+    }
+
+    #information-core {
+      margin-left: auto;
+      margin-right: auto;
+    }
+}
