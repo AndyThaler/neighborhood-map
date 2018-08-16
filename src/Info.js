@@ -25,9 +25,9 @@ class Info extends React.Component {
       .then(data => {
         const firstImage = data.results[1]
         let picture  = [
-            <figure key={this.props.selectedLoc}>
+            <figure key={this.props.selectedLoc} id="figure">
                 <img src={firstImage.urls.small}  className="info-img" alt={this.props.cat.category} />
-                <figcaption>{this.props.cat.category} by {firstImage.user.name}</figcaption>
+                <figcaption className="info-caption">{this.props.cat.category} by {firstImage.user.name}</figcaption>
             </figure>
         ]
         this.setState({img: picture, oldLoc: this.props.selectedLoc})
