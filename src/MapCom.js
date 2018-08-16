@@ -49,10 +49,10 @@ class MapCom extends Component {
     var markerImage = new maps.MarkerImage(
       'http://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|' + color +
       '|40|_|%E2%80%A2',
-      new maps.Size(21, 34),
+      new maps.Size(20, 36),
       new maps.Point(0, 0),
       new maps.Point(10, 34),
-      new maps.Size(21, 34));
+      new maps.Size(20, 36));
       return markerImage;
   }
 

@@ -6,7 +6,7 @@ class Headline extends React.Component {
 
     return (
       <header id="head">
-      <h1 id="head-text" tabIndex="1">Emergency Services Innsbruck</h1>
+      <h1 id="head-text" tabIndex="0">Emergency Services Innsbruck</h1>
       </header>
 
   )
