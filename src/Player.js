@@ -6,18 +6,20 @@ class Player extends React.Component {
 
   render() {
       const opts = {
-        height: '80%',
-        width: '90%',
+        height: '200',
+        width: '200',
         playerVars: {
           autoplay: 0
         }
       }
 
     return (
+    <div id="yt-player">
     <YouTube
       videoId="o4C4jvVwjLw"
       opts={opts}
     />
+    </div>
   )
 }
 }
