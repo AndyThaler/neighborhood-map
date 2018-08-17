@@ -66,6 +66,7 @@ class ListOrg extends React.Component {
         type="text"
         placeholder="Search places"
         tabIndex="0"
+        aria-label="Search-Inputfield"
         value={this.state.query}
         onChange={(event) => this.updateQuery(event.target.value)}
         />
@@ -73,7 +74,7 @@ class ListOrg extends React.Component {
         </div>
         <ul className='service-list'>
           {showingServices.map((service) => (
-          <li aria-labelledby="service-name" tabIndex="0" key={service.title} className={"service-list-item " + ( service.title === this.state.selectedLocation ? 'selected' : '')} onClick= { (event) => this.updateSelectedLocation(event.currentTarget.childNodes[0].innerText.replace(/[\n\t\r]/g,""), locations)}>
+          <li aria-label={service.title} tabIndex="0" key={service.title} className={"service-list-item " + ( service.title === this.state.selectedLocation ? 'selected' : '')} onClick= { (event) => this.updateSelectedLocation(event.currentTarget.childNodes[0].innerText.replace(/[\n\t\r]/g,""), locations)}>
           <div className="service-name">
                 <h3>{service.title}</h3>
           </div>
