@@ -2,10 +2,6 @@
 
 The Neighborhood Map Project is the final project of the Frontend Web-Development course of Udacity, and it features all learned utilities in one project. All in all, the Neighborhood map shows a map (Google Map API) and shows specific markers on it, that mark points of interest - in this case its emergency services in Innsbruck. A list of all markers is given and an information window will give further looks into the locations.
 
-![image]()
-
-![image]()
-
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
