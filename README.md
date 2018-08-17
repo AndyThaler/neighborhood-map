@@ -31,15 +31,21 @@ A step by step series of examples that tell you how to get a development env run
 ```
 $ npm install
 ```
-4. Start the server by simply writing
+4. Create a build version of the app
 
 ```
-$ npm start
+$ npm run build
+```
+
+5. Serve the app on a static server with
+
+```
+$ serve -s build
 ```
 The command window should look like this then:
 
 
-![image]()
+![image](Documentation/CMD.PNG)
 
 ## Third Party API
 
@@ -47,19 +53,35 @@ I used unsplash as the needed third party API, because I could not find another 
 
 ## Deployment
 
-If you want to create a deployment build, simply write
+To use the service worker, the app has to run in deployed mode. Therefore using
 
 ```
-$ npm run build
+$ npm start
 ```
+is **not** recommended.
+
+## Usage
+
+The homepage of the app:
+
+![image](Documentation/homepage.PNG)
+
+In the search field, the user can search for a specific location(service) and can use the delete button next to it to erase the currently chosen location and query.
+
+A list of every item below the search field shows either all locations, or, depending on the query of the search, just the locations that were filtered.
+
+The map shows the markers with their respective colors, depending on the category of the service, and they filter with the search input as well. The markers are clickable and are animated in focus.
+
+The list and map are connected and communicate with each other.
+
+As a third component we see an information section, that shows us the name of the location and a fitting picture with it, depending on which category the location is.
 
 ## Authors
 
 * **Andreas Thaler**
 
 
-## Acknowledgments
+## Sources
 
-* Hat tip to everyone, that did the same project
-* Thanks to Udacity to make this all possible
-* Special thanks to my coffee machine, that keeps me alive throughout coding nights
+* Google Maps API was used through google-map-react
+* Youtuber Player API was used through react-youtube, which uses the iFrame version
