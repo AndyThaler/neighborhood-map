@@ -33,7 +33,7 @@ class Info extends React.Component {
         ]
         this.setState({img: picture, oldLoc: this.props.selectedLoc, error: ''})
       })
-      .catch( e => this.setState({ error: 'Could not find a fitting picture: ' + e, img: ''}))};}}
+      .catch( e => this.setState({ error: 'An error occured when getting more information', img: ''}))};}}
       .bind(this),
       100
     )
