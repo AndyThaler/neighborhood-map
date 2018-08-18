@@ -16,6 +16,15 @@ $ npm install -g create-react-app
 
 And make sure you have create-react-app as a system variable in your **PATH**.
 
+## Deployment
+
+To use the service worker, the app has to run in deployed mode. Therefore using
+
+```
+$ npm start
+```
+is **not** recommended. Follow the steps below to come to a usable state.
+
 ### Installing
 
 A step by step series of examples that tell you how to get a development env running
@@ -45,16 +54,9 @@ The command window should look like this then:
 
 ## Third Party API
 
-I used unsplash as the needed third party API, because I could not find another API in time, to fit the topic of emergency services. To show the ability of making async-fetch requests, that had to do.
+I used **unsplash** as the needed third party API, because I could not find another API in time, to fit the topic of emergency services. To show the ability of making async-fetch requests, that had to do.
 
-## Deployment
-
-To use the service worker, the app has to run in deployed mode. Therefore using
-
-```
-$ npm start
-```
-is **not** recommended.
+https://unsplash.com/
 
 ## Usage
 
@@ -80,4 +82,4 @@ As a third component we see an information section, that shows us the name of th
 ## Sources
 
 * Google Maps API was used through google-map-react
-* Youtuber Player API was used through react-youtube, which uses the iFrame version
+* Unsplash API
