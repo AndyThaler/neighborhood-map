@@ -143,10 +143,16 @@ body {
 }
 
 #map {
-  height: 50vh;
+  height: 49vh;
   width: 97%;
   margin-left: auto;
   margin-right: auto;
+}
+
+#map-error {
+  color: black;
+  font-size: 12px;
+  background-color: red;
 }
 
 /*

@@ -20,7 +20,8 @@ class MapCom extends Component {
     places: [],
     markers: [],
     shownmarkers: [],
-    init: ''
+    init: '',
+    error: ''
   }
 
   //Connecting the list with the marker, when clicked
@@ -89,7 +90,9 @@ class MapCom extends Component {
     this.setMapOnMarkers(this.state.shownMarkers, null)
   }
 
-
+  error(e) {
+    this.setState({ error: 'Something went wrong while fetching information.'})
+  }
   renderMarker(locations, map, maps) {
    this.setState({map: map, maps: maps, markers: []})
    var fireIcon = this.changeMarkerColor('ff0000', maps)
@@ -127,10 +130,12 @@ class MapCom extends Component {
     return (
       <section>
       <div role="application" id="map">
+      <p id="map-error">{this.state.error}</p>
         <GoogleMapReact
           bootstrapURLKeys={{ key: 'AIzaSyAgsu0KDdZbhCISu_0-iDH1DmBuAv00gck' }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
+          onError= {e => this.error(e)}
           onGoogleApiLoaded={({location, map, maps}) => this.renderMarker(this.props.locations, map, maps)}
           yesIWantToUseGoogleMapApiInternals={true}
         >
