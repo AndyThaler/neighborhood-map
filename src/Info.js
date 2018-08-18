@@ -1,8 +1,7 @@
 import React from 'react'
-import Player from './Player'
 class Info extends React.Component {
   state = {
-    img: <Player/>,
+    img: '',
     oldLoc: '',
     error: ''
   }
@@ -12,10 +11,6 @@ class Info extends React.Component {
     //whenever the location changes, this function gets called
     setTimeout(
       function() {
-    if(!this.props.selectedLoc) {
-      this.setState({img: <Player/>})
-    }
-    else {
     //Third-Party API unsplash is requested
     if(this.state.oldLoc !== this.props.selectedLoc) {
     fetch(`https://api.unsplash.com/search/photos?page=1&query=${this.props.cat.category}`, {
@@ -33,7 +28,7 @@ class Info extends React.Component {
         ]
         this.setState({img: picture, oldLoc: this.props.selectedLoc, error: ''})
       })
-      .catch( e => this.setState({ error: 'An error occured when getting more information', img: ''}))};}}
+      .catch( e => this.setState({ error: 'An error occured when getting more information', img: ''}))};}
       .bind(this),
       100
     )
